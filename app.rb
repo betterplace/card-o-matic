@@ -57,6 +57,9 @@ class CardOMatic < Sinatra::Base
       @project.stories.all(label: params[:label])
     end
 
+    @stories.reject!{ |s| s.story_type == 'release'} # never print release-cards
+    @stories.reject!{ |s| s.current_state == 'accepted'} # never print accepted-cards
+
     erb :cards, :layout => false
   end
 
