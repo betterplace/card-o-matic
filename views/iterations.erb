@@ -1,62 +1,40 @@
-<h2><%= @project.name %></h2>
+<h2>Project: <%= @project.name %></h2>
 
 <p>Which cards would you like to print?</p>
 
 <form action="/render" method="post" target="_blank">
-  <ul>
-    <li>
-      <label for="iteration_icebox">
-        <input type="radio" id="iteration_icebox" name="iteration" value="icebox" />
-        <div class="iteration">
-          Icebox
-          <span class="date">All stories currently in the icebox</span>
-        </div>
-      </label>
-    </li>
-    <li>
-      <label for="iteration_backlog">
-        <input type="radio" id="iteration_backlog" name="iteration" value="backlog" />
-        <div class="iteration">
-          Backlog
-          <span class="date">All stories currently in the backlog</span>
-        </div>
-      </label>
-    </li>
-  </ul>
+  <input type="hidden" name="iteration" value="icebox" />
+  <input type="hidden" name="project_id" value="<%= @project.id %>" />
+  <input type="hidden" name="api_key" value="<%= @api_key %>" />
+  <button type="submit" title="(opens in a new window)">Generate cards for Icebox</button>
+</form>
 
-  <ul>
-    <% @iterations.reverse_each do |iteration_number| %>
-      <li>
-        <label for="iteration_<%= iteration_number %>">
-          <input type="radio" id="iteration_<%= iteration_number %>" name="iteration" value="<%= iteration_number %>" />
-          <div class="iteration">
-            Iteration <%= iteration_number %>
-          </div>
-        </label>
-      </li>
-    <% end %>
-  </ul>
+<form action="/render" method="post" target="_blank">
+  <input type="hidden" name="iteration" value="backlog" />
+  <input type="hidden" name="project_id" value="<%= @project.id %>" />
+  <input type="hidden" name="api_key" value="<%= @api_key %>" />
+  <button type="submit" title="(opens in a new window)">Generate cards for Backlog</button>
+</form>
 
-  <ul>
-    <li>
-      <label for="iteration_label">
-        <input type="radio" id="iteration_label" name="iteration" value="label" />
-        <div class="iteration">
-          By label:
-          <input type="text" value=""
-            id="label" name="label"
-            placeholder="Label name"
-            />
-        </div>
-      </label>
-    </li>
-  </ul>
+<hr>
 
-  <p>
-    <button type="submit">Generate these cards <span>(opens in a new window)</span></button>
+<% @iterations.reverse_each do |iteration_number| %>
+  <form action="/render" method="post" target="_blank">
+    <input type="hidden" name="iteration" value="<%= iteration_number %>" />
     <input type="hidden" name="project_id" value="<%= @project.id %>" />
     <input type="hidden" name="api_key" value="<%= @api_key %>" />
-  </p>
+    <button type="submit" title="(opens in a new window)">Generate cards for Iteration <%= iteration_number %></button>
+  </form>
+<% end %>
+
+<hr>
+
+<form action="/render" method="post" target="_blank" class="label-form">
+  <input type="hidden" name="iteration" value="label" />
+  <input type="hidden" name="project_id" value="<%= @project.id %>" />
+  <input type="hidden" name="api_key" value="<%= @api_key %>" />
+  <input type="text" id="label" name="label" placeholder="Label name" required />
+  <button type="submit" title="(opens in a new window)">Generate cards for this Label</button>
 </form>
 
 <p class="start-again"><a href="/">start again</a></p>

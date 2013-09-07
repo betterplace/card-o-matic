@@ -85,8 +85,6 @@ button {
   border: none;
   font-size: 1em;
   padding: 0.5em 0.7em;
-  margin: 2em auto 0;
-  display: block;
 }
 button:hover {
   background: #555;
@@ -95,6 +93,10 @@ button span {
   display: block;
   font-size: 0.7em;
   padding-top: 0.2em;
+}
+form.label-form input {
+  font-size: 1em;
+  width: 17em;
 }
 
 a, a:link, a:visited { color: #22628f; }
