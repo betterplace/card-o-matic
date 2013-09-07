@@ -36,6 +36,22 @@
       </li>
     <% end %>
   </ul>
+
+  <ul>
+    <li>
+      <label for="iteration_label">
+        <input type="radio" id="iteration_label" name="iteration" value="label" />
+        <div class="iteration">
+          By label:
+          <input type="text" value=""
+            id="label" name="label"
+            placeholder="Label name"
+            />
+        </div>
+      </label>
+    </li>
+  </ul>
+
   <p>
     <button type="submit">Generate these cards <span>(opens in a new window)</span></button>
     <input type="hidden" name="project_id" value="<%= @project.id %>" />

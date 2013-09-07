@@ -53,6 +53,8 @@ class CardOMatic < Sinatra::Base
       PivotalTracker::Iteration.backlog(@project).first.stories
     when /\d+/
       @project.iterations.all(offset: params[:iteration].to_i-1, limit: 1).first.stories
+    when 'label'
+      @project.stories.all(label: params[:label])
     end
 
     erb :cards, :layout => false
