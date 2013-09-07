@@ -48,14 +48,11 @@
   position: relative;
 }
 
-.back {
-  border: 1mm solid #333;
-}
-
 .header {
   height: 7.5mm;
   overflow: hidden;
   text-transform: uppercase;
+  text-align: right;
 }
 
 .back .header {
@@ -78,30 +75,17 @@
   max-height: 48mm;
 }
 
-.front .story-type {
-  color: rgba(255, 0, 0, 0.1);
-  font-family: impact;
-  font-weight: bolder;
-  text-transform: uppercase;
-  overflow: hidden;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
-
 .front .story-title {
   font-weight: bold;
   font-size: 9mm;
   text-align: center;
-  display: table-cell;
+  display: block;
   vertical-align: middle;
-  text-transform: uppercase;
   z-index: 4;
 }
 
-.labels {
-  float: right;
+.front .workflow {
+
 }
 
 .label {
@@ -119,9 +103,8 @@
   font-weight: bold;
 }
 
-
 .back .id {
-  float: right;
+  float: left;
 }
 
 .back .id:before {
@@ -147,6 +130,15 @@
   text-transform: uppercase;
 }
 
+.writeline {
+  border-bottom: 1px solid #ccc;;
+  display: inline-block;
+  text-align: center;
+}
+.writeline.empty {
+  border-color: black;
+}
+
 .points {
   float: right;
   position: relative;
@@ -155,8 +147,20 @@
   font-weight: bold;
 }
 
+.points .writeline {
+  width: 45px;
+  height: 40px
+}
+
 .back .story-title {
   font-weight: bold;
+  font-size: 180%;
+  margin-bottom: 2mm;
+  overflow: elypse;
+}
+
+.back .testing-checklist {
+  font-size: 120%;
 }
 
 .description {
@@ -180,7 +184,7 @@
 }
 
 .requester {
-  float: left;
+  float: right;
 }
 
 .requester:before {
@@ -189,13 +193,11 @@
 }
 
 
-.owner {
-  float: right;
+.owner strong {
+  font-size: 150%;
 }
-
-.owner:before {
-  content: "For: ";
-  font-weight: bold;
+.owner .writeline {
+  min-width: 100px;
 }
 
 
@@ -263,6 +265,18 @@
 /*
  *  story type as rubber stamp
  */
+.front .story-type {
+  color: rgba(255, 0, 0, 0.1);
+  font-family: impact;
+  font-weight: bolder;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
 .rubber-stamp .chore .front .story-type {
   margin-top: 0mm;
   margin-left: 0mm;
@@ -292,9 +306,12 @@
 }
 
 .rubber-stamp .bug .front .story-type {
-  margin-top: -11mm;
+  color: rgba(255, 0, 0, 0.2);
+  margin-top: -20mm;
   margin-left: 7mm;
   font-size: 62mm;
+  width: 100mm;
+  text-align: center;
 }
 
 /*
