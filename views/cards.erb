@@ -21,7 +21,7 @@
               <% end %>
             </div>
             <div class="middle">
-              <div class="story-title"><%= story.name %></div>
+              <div class="story-title"><%= Rack::Utils.escape_html(story.name) %></div>
               <div class="story-type"><%= story.story_type %></div>
             </div>
             <div class="footer">
@@ -45,8 +45,8 @@
               <span class="id"><%= story.id %></span>
             </div>
             <div class="middle">
-              <div class="story-title"><%= story.name %></div>
-              <div class="description"><%= story.description %></div>
+              <div class="story-title"><%= Rack::Utils.escape_html(story.name) %></div>
+              <div class="description"><%= Rack::Utils.escape_html(story.description) %></div>
             </div>
             <div class="footer">
               <% if story.requested_by %><span class="requester"><%= story.requested_by %></span><% end %>
