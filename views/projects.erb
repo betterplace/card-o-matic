@@ -1,20 +1,11 @@
 <p>Select the project you'd like to print cards for:</p>
 
-<form action="/iterations" method="post">
-  <ul>
-    <% @projects.each do |project| %>
-      <li>
-        <label for="project_<%= project.id %>">
-          <input type="radio" id="project_<%= project.id %>" name="project_id" value="<%= project.id %>" />
-          <%= project.name %>
-        </label>
-      </li>
-    <% end %>
-  </ul>
-  <p>
-    <button type="submit">Next</button>
+<% @projects.each do |project| %>
+  <form action="/iterations" method="post">
+    <input type="hidden" name="project_id" value="<%= project.id %>" />
+    <button type="submit">Open <%= project.name %></button>
     <input type="hidden" name="api_key" value="<%= @api_key %>" />
-  </p>
-</form>
+  </form>
+<% end %>
 
 <p class="start-again"><a href="/">start again</a></p>
