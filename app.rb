@@ -87,7 +87,8 @@ class CardOMatic < Sinatra::Base
 
   def fetch_iterations(project)
     start = project.current_iteration_number < 5 ? 1 : project.current_iteration_number-4
-    (start..project.current_iteration_number)
+    stop  = project.current_iteration_number + 4
+    (start..stop)
   end
 
   def render_previous_step_with_error(view, error)
