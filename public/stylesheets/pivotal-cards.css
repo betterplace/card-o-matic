@@ -48,17 +48,13 @@
   position: relative;
 }
 
-.header {
-  height: 7.5mm;
-  overflow: hidden;
-  text-transform: uppercase;
-  text-align: right;
-}
-
 .back .header {
+  height: 7.5mm;
+  text-transform: uppercase;
   border-bottom: 1mm solid #333;
   margin-bottom: 4mm;
   padding-bottom: 2mm;
+  text-align: right;
 }
 
 .middle {
@@ -82,16 +78,13 @@
   display: block;
   vertical-align: middle;
   z-index: 4;
+  margin-bottom: 5mm;
 }
 
-.front .workflow {
-
-}
-
-.label {
+.tag {
   background-color: #333;
   color: #fff;
-  padding: 1mm;
+  padding: 0.6mm 1mm;
 }
 
 .header .project,
@@ -99,7 +92,8 @@
   padding: 1mm 0;
 }
 
-.project {
+.project,
+.project-label {
   font-weight: bold;
 }
 
@@ -117,6 +111,16 @@
   width: 115mm;
   position: absolute;
   bottom: 0;
+}
+
+.front .footer {
+  height: 7.5mm;
+}
+
+.labels {
+  font-size: 2.5mm;
+  margin-left: 2mm;
+  text-transform: uppercase;
 }
 
 .amp {
@@ -213,7 +217,7 @@
   background-color: #ffffff;
 }
 
-.filing-colours .bug .label {
+.filing-colours .bug .tag {
   color: #ffffff;
 }
 
@@ -222,7 +226,7 @@
   background-color: #f8f8f8;
 }
 
-.filing-colours .chore .label {
+.filing-colours .chore .tag {
   color: #f8f8f8;
 }
 
@@ -231,7 +235,7 @@
   background-color: #f0b040;
 }
 
-.filing-colours .epic .label {
+.filing-colours .epic .tag {
   color: #f0b040;
 }
 
@@ -240,7 +244,7 @@
   background-color: #d0c0ff;
 }
 
-.filing-colours .release .label {
+.filing-colours .release .tag {
   color: #d0c0ff;
 }
 
@@ -249,7 +253,7 @@
   background-color: #e9f9d9;
 }
 
-.filing-colours .feature .label {
+.filing-colours .feature .tag {
   color: #f0ffe0;
 }
 
@@ -258,7 +262,7 @@
   background-color: #fffba0;
 }
 
-.filing-colours .spike .label {
+.filing-colours .spike .tag {
   color: #fffba0;
 }
 

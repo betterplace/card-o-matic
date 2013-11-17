@@ -11,17 +11,6 @@
         <% next if story.nil? %>
         <div class="<%= story.story_type %> card" id="front-<%= i %>">
           <div class="front side">
-            <div class="header">
-              <span class="status"><%= story.current_state %></span>
-              <% if story.labels %>
-                <span class="labels">
-                  <% story.labels.split(',').each do |label| %>
-                    <span class="label"><%= label %></span>
-                  <% end %>
-                 <span>
-              <% end %>
-              <span class="project"><%= @project.name %></span>
-            </div>
             <div class="middle">
               <div class="story-title"><%= Rack::Utils.escape_html(story.name) %></div>
               <div class="workflow">
@@ -41,6 +30,7 @@
               </div>
             </div>
             <div class="footer">
+
               <span class="owner">
                 <strong>♕</strong>
                 <% if story.owned_by %>
@@ -49,6 +39,21 @@
                   <span class="writeline empty"></span>
                 <% end %>
               </span>
+
+              <span class="labels">
+                <span class="project-label"><%= @project.name %></span>
+                <span class="status-label">
+                  <%= story.current_state if ['started', 'finished'].include?(story.current_state) %>
+                </span>
+                <% if story.labels %>
+                  <span class="tags">
+                    <% story.labels.split(',').each do |label| %>
+                      <span class="tag"><%= label %></span>
+                    <% end %>
+                   <span>
+                <% end %>
+              </span>
+
               <% if story.estimate %>
                 <span class="points points<%= story.estimate %>">
                   <% if story.estimate > 0 %>
