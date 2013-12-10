@@ -78,7 +78,8 @@
   display: block;
   vertical-align: middle;
   z-index: 4;
-  margin-bottom: 5mm;
+  position: absolute;
+  bottom: 0px;
 }
 
 .tag {
@@ -146,14 +147,14 @@
 .points {
   float: right;
   position: relative;
-  top: -4.5mm;
-  font-size: 9mm;
+  top: -7.0mm;
+  font-size: 12mm;
   font-weight: bold;
 }
 
 .points .writeline {
   width: 45px;
-  height: 40px
+  height: 50px;
 }
 
 .back .story-title {
@@ -310,12 +311,14 @@
 }
 
 .rubber-stamp .bug .front .story-type {
-  color: rgba(255, 0, 0, 0.2);
-  margin-top: -20mm;
-  margin-left: 7mm;
-  font-size: 62mm;
-  width: 100mm;
+  background-color: rgba(255, 0, 0, 1.0);
+  color: white;
   text-align: center;
+  display: inline-block;
+  padding: 1px 8px;
+  position: relative;
+  font-size: 30px;
+  margin: 0 40%;
 }
 
 /*

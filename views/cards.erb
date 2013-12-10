@@ -12,22 +12,22 @@
         <div class="<%= story.story_type %> card" id="front-<%= i %>">
           <div class="front side">
             <div class="middle">
-              <div class="story-title"><%= Rack::Utils.escape_html(story.name) %></div>
-              <div class="workflow">
+              <div class="story-title">
+                <div class="story-type">
+                  <% if story.story_type == 'bug' %>
+                    BUG
+                  <% end %>
+                </div>
+                <%= Rack::Utils.escape_html(story.name) %>
+              </div>
+              <!--<div class="workflow">
                 Rebrief w/ PM ❱
                 Do ❱
                 Check w/ PM ❱
                 Finalize ❱
                 Finish+Review (▢ Codingg. ▢ Guidel.html/css ▢ Guidel.i18n ▢ Softw.Test ▢ ManualTest) ❱
                 PM Pull ❱ Update (▢ Check bp42)
-              </div>
-              <div class="story-type">
-                <% if story.story_type == 'bug' %>
-                  ☠
-                <% elsif story.story_type == 'chore' %>
-                  <%= story.story_type %>
-                <% end %>
-              </div>
+              </div>-->
             </div>
             <div class="footer">
 
@@ -41,7 +41,7 @@
               </span>
 
               <span class="labels">
-                <span class="project-label"><%= @project.name %></span>
+                <!--<span class="project-label"><%= @project.name %></span>-->
                 <span class="status-label">
                   <%= story.current_state if ['started', 'finished'].include?(story.current_state) %>
                 </span>
