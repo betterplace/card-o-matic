@@ -9,8 +9,14 @@ bundle install
 bundle exec unicorn -p 5000
 ```
 
-and visit <http://localhost:5000> in your browser.
+Then visit <http://localhost:5000> in your browser.
 
-## Notes
+### API Key
 
-* The iteration selection is limited to the most recent three sprints due to the time it takes to load an iteration from Pivotal's API. This might be adjusted.
+You need your Pivotal API key which you get at the bottom of https://www.pivotaltracker.com/profile
+
+## Printing
+
+This are my settings for google chrome:
+
+![print-settings-for-pivotal-card-o-matic.png](images/print-settings-for-pivotal-card-o-matic.png "print-settings-for-pivotal-card-o-matic.png")
