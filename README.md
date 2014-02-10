@@ -19,4 +19,4 @@ You need your Pivotal API key which you get at the bottom of https://www.pivotal
 
 This are my settings for google chrome:
 
-![print-settings-for-pivotal-card-o-matic.png](images/print-settings-for-pivotal-card-o-matic.png "print-settings-for-pivotal-card-o-matic.png")
+![print-settings-for-pivotal-card-o-matic.png](print-settings-for-pivotal-card-o-matic.png "print-settings-for-pivotal-card-o-matic.png")
