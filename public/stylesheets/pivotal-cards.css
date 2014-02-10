@@ -14,6 +14,12 @@
   page-break-after: always;
 }
 
+/* DEACTIVATE BACK SIDE */
+.page.backs {
+  display: none;
+}
+
+
 /*
  *  double-sided printing
  */
