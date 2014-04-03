@@ -4,6 +4,10 @@
   <link href="/stylesheets/pivotal-cards.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
+  <% if @stories.blank? %>
+    <h1>No stories found</h1>
+  <% end %>
+
   <div id="pivotal-cards-pages" class="rubber-stamp double-sided">
     <% @stories.in_groups_of(4) do |page| %>
       <div class="page fronts">
@@ -109,5 +113,6 @@
       </div>
     <% end %>
   </div>
+
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <style type="text/css">
+    td {
+      border: 1px solid silver;
+      padding: 10px 5px;
+    }
+    td.bug,
+    td.estimate_-1 {
+      background-color: #FFC6C6;
+    }
+    td.chore {
+      background-color: silver;
+    }
+    td.started {
+      background-color: lightgreen;
+    }
+    td.unstarted {
+      background-color: lightgray;
+    }
+    td.unscheduled {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <% if @stories.blank? %>
+    <h1>No stories found</h1>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Points</th>
+        <th>Title</th>
+        <th>Description (Creator)</th>
+        <th>Labels</th>
+        <th>State</th>
+        <th>Created at</th>
+      </tr>
+    </thead>
+    <% @stories.each_with_index do |story, i| %>
+      <% next if story.nil? %>
+      <tr>
+        <td class="<%= story.story_type %>"><%= story.story_type %></td>
+        <td class="estimate_<%= story.estimate %>"><%= story.estimate %></td>
+        <td><strong><%= Rack::Utils.escape_html(story.name) %></strong></td>
+        <td style="font-size: 70%">
+          <%= RDiscount.new(story.description).to_html %>
+          <p>Requested by: <%= story.requested_by %></p>
+        </td>
+        <td><%= story.labels %></td>
+        <td class="<%= story.current_state %>"><%= story.current_state %></td>
+        <td><%= story.created_at.to_date %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</body>
+</html>

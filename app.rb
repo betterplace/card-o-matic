@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'pivotal_tracker'
 require 'active_support/all'
 require 'rack/ssl-enforcer'
+require 'rdiscount'
 
 PivotalTracker::Client.use_ssl = true
 
@@ -37,7 +38,7 @@ class CardOMatic < Sinatra::Base
     erb :iterations
   end
 
-  post '/render' do
+  get '/render' do
     setup_api_key
     setup_project
 
@@ -60,7 +61,11 @@ class CardOMatic < Sinatra::Base
     @stories.reject!{ |s| s.story_type == 'release'} # never print release-cards
     @stories.reject!{ |s| s.current_state == 'accepted'} # never print accepted-cards
 
-    erb :cards, :layout => false
+    if params[:layout] == 'table'
+      erb :stories_as_table, layout: false
+    else
+      erb :stories_as_cards, layout: false
+    end
   end
 
   def setup_project

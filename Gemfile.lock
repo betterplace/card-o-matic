@@ -37,6 +37,7 @@ GEM
       rack
     rack-ssl-enforcer (0.2.5)
     raindrops (0.10.0)
+    rdiscount (2.1.7)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sinatra (1.4.2)
@@ -56,6 +57,7 @@ DEPENDENCIES
   activesupport
   pivotal-tracker!
   rack-ssl-enforcer
+  rdiscount
   rest-client
   sinatra
   unicorn
