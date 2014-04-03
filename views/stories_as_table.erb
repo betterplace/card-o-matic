@@ -32,6 +32,7 @@
   <table>
     <thead>
       <tr>
+        <th>ID</th>
         <th>Type</th>
         <th>Points</th>
         <th>Title</th>
@@ -44,6 +45,7 @@
     <% @stories.each_with_index do |story, i| %>
       <% next if story.nil? %>
       <tr>
+        <td><%= story.id %></td>
         <td class="<%= story.story_type %>"><%= story.story_type %></td>
         <td class="estimate_<%= story.estimate %>"><%= story.estimate %></td>
         <td><strong><%= Rack::Utils.escape_html(story.name) %></strong></td>
