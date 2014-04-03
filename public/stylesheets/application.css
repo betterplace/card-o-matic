@@ -57,7 +57,8 @@ form li label {
   padding: 1em 0.5em;
   display: block;
 }
-form li .iteration, form li input {
+form li .iteration,
+form li input {
   display: inline-block;
   vertical-align: top;
 }
@@ -68,7 +69,8 @@ form li .iteration span {
   font-size: 0.9em;
 }
 
-form input[type='text'] {
+form input[type='text'],
+form input[type='password'] {
   width: 100%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
