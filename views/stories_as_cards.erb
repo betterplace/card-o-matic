@@ -15,8 +15,34 @@
         <% next if story.nil? %>
         <div class="<%= story.story_type %> card" id="front-<%= i %>">
           <div class="front side">
-            <div class="middle">
+            <div class="header">
+
+              <span class="owner">
+                <% if story.owned_by %>
+                  <span class="writeline">
+                    <%= story.owned_by.to_s.split(/[\.\- ]/)[0].to_s[0] + story.owned_by.to_s.split(/[\.\- ]/)[1].to_s[0] + story.owned_by.to_s.split(/[\.\- ]/)[1].to_s[1] %>
+                  </span>
+                <% else %>
+                  <span class="writeline empty"></span>
+                <% end %>
+              </span>
+
               <img src="/magnet.png" style="width: 120px; position: absolute; right: 140px;"/>
+
+              <% if story.estimate %>
+                <span class="points points<%= story.estimate %>">
+                  <% if story.estimate > 0 %>
+                    <span class="writeline"><%= story.estimate %></span>
+                  <% else %>
+                    <span class="writeline empty"></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+            </div>
+
+            <div class="middle">
+
               <div class="story-title">
                 <div class="story-type">
                   <% if story.story_type == 'bug' %>
@@ -25,28 +51,21 @@
                 </div>
                 <%= Rack::Utils.escape_html(story.name) %>
               </div>
-              <!--<div class="workflow">
-                Rebrief w/ PM ❱
-                Do ❱
-                Check w/ PM ❱
-                Finalize ❱
-                Finish+Review (▢ Codingg. ▢ Guidel.html/css ▢ Guidel.i18n ▢ Softw.Test ▢ ManualTest) ❱
-                PM Pull ❱ Update (▢ Check bp42)
-              </div>-->
+
             </div>
+
             <div class="footer">
+              <div class="checklist">
+                <!--▢ -->Rebriefing |
+                <!--▢ -->Code Review |
+                <!--▢ -->Specs |<br>
+                <!--▢ -->Browser: Chr, FF, IE8, iOS, Andr 4.0, Andr Chr |
+                <!--▢ -->Testable (bp42)
+              </div>
 
-              <span class="owner">
-                <strong>♕</strong>
-                <% if story.owned_by %>
-                  <span class="writeline"><%= story.owned_by %></span>
-                <% else %>
-                  <span class="writeline empty"></span>
-                <% end %>
-              </span>
-
+              <!--
               <span class="labels">
-                <!--<span class="project-label"><%= @project.name %></span>-->
+                <span class="project-label"><%= @project.name %></span>
                 <span class="status-label">
                   <%= story.current_state if ['started', 'finished'].include?(story.current_state) %>
                 </span>
@@ -58,22 +77,15 @@
                    <span>
                 <% end %>
               </span>
+              -->
 
-              <% if story.estimate %>
-                <span class="points points<%= story.estimate %>">
-                  <% if story.estimate > 0 %>
-                    <span class="writeline"><%= story.estimate %></span>
-                  <% else %>
-                    <span class="writeline empty"></span>
-                  <% end %>
-                </span>
-              <% end %>
             </div>
           </div>
         </div>
       <% end %>
       </div>
 
+      <!--
       <div class="page backs">
       <% page.each_with_index do |story, i| %>
         <% next if story.nil? %>
@@ -86,24 +98,16 @@
             <div class="middle">
               <div class="story-title"><%= Rack::Utils.escape_html(story.name) %></div>
               <div class="testing-checklist">
-                <strong>Tested:</strong>
-                <br>
-                <% if @project.name == 'mobile' %>
-                  ▢ iOS Chrome
-                  ▢ iOS Safari
-                  ▢ Android Chrome
-                  ▢ Android Native
-                  ▢ …
-                <% else %>
-                  ▢ Chrome
-                  ▢ Firefox
-                  ▢ Safari<br>
-                  ▢ IE 8
-                  ▢ IE 9
-                  ▢ IE 10
-                <% end %>
+                <strong>Checklist:</strong>
+                <ul>
+                  <li>▢ Rebriefing</li>
+                  <li>▢ Code Review</li>
+                  <li>▢ Specs</li>
+                  <li>▢ Browser: Chrome, FF, IE8, iOS, Android 4.0, Android Chrome</li>
+                  <li>▢ Testable on bp42</li>
+                </ul>
               </div>
-              <!--<div class="description"><%= Rack::Utils.escape_html(story.description) %></div>-->
+              <div class="description"><%= Rack::Utils.escape_html(story.description) %></div>
             </div>
             <div class="footer">
               <% if story.requested_by %><span class="requester"><%= story.requested_by %></span><% end %>
@@ -112,6 +116,7 @@
         </div>
       <% end %>
       </div>
+      -->
     <% end %>
   </div>
 

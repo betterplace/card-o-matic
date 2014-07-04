@@ -14,11 +14,6 @@
   page-break-after: always;
 }
 
-/* DEACTIVATE BACK SIDE */
-.page.backs {
-  display: none;
-}
-
 
 /*
  *  double-sided printing
@@ -64,12 +59,11 @@
 }
 
 .middle {
-  height: 53mm;
-  max-height: 53mm;
-  width: 115mm;
+  position: absolute;
+  height: 145px;
+  top: 70px;
+  line-height: 145px;
   overflow: hidden;
-  display: table;
-  position: relative;
 }
 
 .back .middle {
@@ -77,15 +71,14 @@
   max-height: 48mm;
 }
 
-.front .story-title {
+.front .middle .story-title {
   font-weight: bold;
   font-size: 9mm;
   text-align: center;
-  display: block;
+  line-height: 9.3mm;
+  display: inline-block;
   vertical-align: middle;
   z-index: 4;
-  position: absolute;
-  bottom: 0px;
 }
 
 .tag {
@@ -114,14 +107,14 @@
 
 .footer {
   color: #333;
-  height: 7.5mm;
+  /*height: 13mm;*/
   width: 115mm;
   position: absolute;
   bottom: 0;
 }
-
-.front .footer {
-  height: 7.5mm;
+.checklist {
+  font-size: 14pt;
+  text-align: center;
 }
 
 .labels {
@@ -151,9 +144,8 @@
 }
 
 .points {
-  float: right;
-  position: relative;
-  top: -7.0mm;
+  position: absolute;
+  right: 0px;
   font-size: 12mm;
   font-weight: bold;
 }
@@ -203,9 +195,12 @@
   font-weight: bold;
 }
 
-
-.owner strong {
-  font-size: 150%;
+.owner {
+  position: absolute;
+  left: 0px;
+  top: 37px;
+  text-transform: uppercase;
+  font-size: 200%;
 }
 .owner .writeline {
   min-width: 100px;
