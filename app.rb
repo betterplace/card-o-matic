@@ -8,6 +8,9 @@ require 'better_errors'
 PivotalTracker::Client.use_ssl = true
 
 class CardOMatic < Sinatra::Base
+  enable :sessions
+  set :session_secret, ENV['SESSION_SECRET'] || '1897bd5986da9'
+
   configure :production do
     use Rack::SslEnforcer
   end
@@ -87,26 +90,30 @@ class CardOMatic < Sinatra::Base
 
     erb :stories_as_cards, layout: false
   end
+
   def setup_project
+    project_id = (params[:project_id] || session[:project_id]).to_i
     begin
-      @project = PivotalTracker::Project.find(params[:project_id].to_i)
+      @project = PivotalTracker::Project.find(project_id)
       raise InvalidProjectId unless @project
     rescue RestClient::ResourceNotFound
       raise InvalidProjectId
     end
+    session[:project_id] = project_id
   rescue InvalidProjectId
     @projects = PivotalTracker::Project.all
     render_previous_step_with_error(:projects, 'Please choose a project to print cards for.')
   end
 
   def setup_api_key
-    @api_key = params[:api_key]
+    @api_key = params[:api_key] || session[:api_key]
 
     if @api_key.nil? || @api_key.empty?
       render_previous_step_with_error(:start, 'Please enter an API key')
     end
 
     PivotalTracker::Client.token = @api_key
+    session[:api_key] = @api_key
   end
 
   def fetch_iterations(project)
