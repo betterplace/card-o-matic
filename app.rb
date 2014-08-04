@@ -74,6 +74,19 @@ class CardOMatic < Sinatra::Base
     end
   end
 
+  post '/render_stories' do
+    setup_api_key
+    setup_project
+    story_ids = params[:story_ids].split(',')
+    @stories = []
+
+    story_ids.each do |id|
+      @stories << @project.stories.find(id)
+    end
+    @stories.compact!
+
+    erb :stories_as_cards, layout: false
+  end
   def setup_project
     begin
       @project = PivotalTracker::Project.find(params[:project_id].to_i)

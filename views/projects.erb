@@ -3,9 +3,25 @@
 <% @projects.each do |project| %>
   <form action="/iterations" method="post">
     <input type="hidden" name="project_id" value="<%= project.id %>" />
-    <button type="submit">Open <%= project.name %></button>
     <input type="hidden" name="api_key" value="<%= @api_key %>" />
+    <button type="submit">Open <%= project.name %></button>
   </form>
 <% end %>
+
+<hr>
+
+<p>Print certain stories from a project</p>
+<form action="/render_stories" method="post">
+  <select name="project_id">
+  <% @projects.each do |project| %>
+    <option value="<%= project.id %>"><%= project.name %></option>
+  <% end %>
+  </select>
+  <br/>
+  <label for="story_ids">Story IDs (comma separated):</label>
+  <input type="text" name="story_ids" value="" />
+  <p>e.g. "13456,89122,12773"</p>
+  <button type="submit">Render Stories</button>
+</form>
 
 <p class="start-again"><a href="/">start again</a></p>
