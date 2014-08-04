@@ -3,7 +3,6 @@ require 'pivotal_tracker'
 require 'active_support/all'
 require 'rack/ssl-enforcer'
 require 'rdiscount'
-require 'better_errors'
 
 PivotalTracker::Client.use_ssl = true
 
@@ -16,6 +15,7 @@ class CardOMatic < Sinatra::Base
   end
 
   configure :development do
+    require 'better_errors'
     use BetterErrors::Middleware
     BetterErrors.application_root = __dir__
   end
