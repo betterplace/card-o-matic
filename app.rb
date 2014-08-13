@@ -81,9 +81,8 @@ class CardOMatic < Sinatra::Base
   post '/render_blank' do
     setup_api_key
     setup_project
-    @stories = [
-      OpenStruct.new(story_type: 'feature')
-    ]
+    @stories = []
+    4.times { @stories.push OpenStruct.new(story_type: 'feature') }
 
     erb :stories_as_cards, layout: false
   end
