@@ -3,6 +3,7 @@ require 'pivotal_tracker'
 require 'active_support/all'
 require 'rack/ssl-enforcer'
 require 'rdiscount'
+require 'ostruct'
 
 PivotalTracker::Client.use_ssl = true
 
@@ -75,6 +76,16 @@ class CardOMatic < Sinatra::Base
     else
       erb :stories_as_cards, layout: false
     end
+  end
+
+  post '/render_blank' do
+    setup_api_key
+    setup_project
+    @stories = [
+      OpenStruct.new(story_type: 'feature')
+    ]
+
+    erb :stories_as_cards, layout: false
   end
 
   post '/render_stories' do
