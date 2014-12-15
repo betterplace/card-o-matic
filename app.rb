@@ -21,10 +21,6 @@ class CardOMatic < Sinatra::Base
     BetterErrors.application_root = __dir__
   end
 
-  use Rack::Auth::Basic, "Restricted Area" do |username, password|
-    username == 'better' and password == 'cards'
-  end
-
   get '/' do
     @intro = true
 
