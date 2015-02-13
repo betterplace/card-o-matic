@@ -60,7 +60,7 @@ class CardOMatic < Sinatra::Base
     when 'backlog'
       PivotalTracker::Iteration.backlog(@project).first.stories
     when /\d+/
-      @project.iterations.all(offset: params[:iteration].to_i-1, limit: 1).first.stories
+      @project.iterations.all(offset: params[:iteration].to_i-2, limit: 1).first.stories
     when 'label'
       @project.stories.all(label: params[:label])
     end
