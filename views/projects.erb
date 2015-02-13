@@ -12,6 +12,7 @@
 
 <p>Print certain stories from a project</p>
 <form action="/render_stories" method="post">
+  <input type="hidden" name="api_key" value="<%= @api_key %>" />
   <select name="project_id">
   <% @projects.each do |project| %>
     <option value="<%= project.id %>"><%= project.name %></option>
