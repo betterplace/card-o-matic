@@ -1,5 +1,10 @@
 <p>Select the project you'd like to print cards for:</p>
 
+  <form action="/current" method="post">
+    <input type="hidden" name="project_id" value="1254912" />
+    <input type="hidden" name="api_key" value="<%= @api_key %>" />
+    <button type="submit">Open current</button>
+  </form>
 <% @projects.each do |project| %>
   <form action="/iterations" method="post">
     <input type="hidden" name="project_id" value="<%= project.id %>" />

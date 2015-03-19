@@ -45,6 +45,14 @@ class CardOMatic < Sinatra::Base
     erb :iterations
   end
 
+  post '/current' do
+    setup_api_key
+    setup_project
+
+    @stories = @project.iterations.current(@project).stories.select { |s| s.current_state == 'planned' }
+    erb :current
+  end
+
   get '/render' do
     setup_api_key
     setup_project
@@ -87,7 +95,10 @@ class CardOMatic < Sinatra::Base
   post '/render_stories' do
     setup_api_key
     setup_project
-    story_ids = params[:story_ids].split(',')
+    story_ids = params[:story_ids]
+    unless story_ids.is_a? Enumerable
+      story_ids = story_ids.split /\s?,/
+    end
     @stories = []
 
     story_ids.each do |id|
@@ -97,6 +108,7 @@ class CardOMatic < Sinatra::Base
 
     erb :stories_as_cards, layout: false
   end
+
   def setup_project
     begin
       @project = PivotalTracker::Project.find(params[:project_id].to_i)
