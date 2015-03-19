@@ -5,16 +5,15 @@
 <form action="/render_stories" method="post" target="_blank">
   <input type="hidden" name="project_id" value="<%= @project.id %>" />
   <input type="hidden" name="api_key" value="<%= @api_key %>" />
-
   <div>
-    <%- @stories.each do |story| %>
+    <% @stories.each do |story| %>
       <div style="white-space: nowrap;">
         <input style="display: inline" id="story_<%= story.id %>" type="checkbox" value="<%= story.id %>" name="story_ids[]" />
         <label style="display: inline-block; padding: 15px 0; text-overflow: ellipsis;" for="story_<%= story.id %>">
           <small>(<%= story.id %>)</small> <%= story.name %>
         </label>
       </div>
-    <%- end %>
+    <% end %>
   </div>
 
   <button type="submit" title="(opens in a new window)">Print</button>
