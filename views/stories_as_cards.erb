@@ -21,7 +21,8 @@
               <span class="owner">
                 <% if story.owned_by %>
                   <span class="writeline">
-                    <%= story.owned_by.to_s.split(/[\.\- ]/)[0].to_s[0] + story.owned_by.to_s.split(/[\.\- ]/)[1].to_s[0] + story.owned_by.to_s.split(/[\.\- ]/)[1].to_s[1] %>
+                    <% first_name, last_name = story.owned_by.to_s.split(/[\.\- ]/) %>
+                    <%= first_name.to_s[0] + last_name.to_s[0..1] %>
                   </span>
                 <% else %>
                   <span class="writeline empty"></span>
@@ -29,6 +30,8 @@
               </span>
 
               <img src="/magnet.png" style="width: 120px; position: absolute; right: 140px;"/>
+
+              <span class="story-id"><%= story.id %></span>
 
               <% if story.estimate %>
                 <span class="points points<%= story.estimate %>">

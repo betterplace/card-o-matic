@@ -81,6 +81,12 @@
   z-index: 4;
 }
 
+.front .header .story-id {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .tag {
   background-color: #333;
   color: #fff;
