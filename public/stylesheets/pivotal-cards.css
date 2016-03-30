@@ -87,12 +87,6 @@
   top: 0;
 }
 
-.tag {
-  background-color: #333;
-  color: #fff;
-  padding: 0.6mm 1mm;
-}
-
 .header .project,
 .header .id {
   padding: 1mm 0;
@@ -109,24 +103,6 @@
 
 .back .id:before {
   content: '#';
-}
-
-.footer {
-  color: #333;
-  /*height: 13mm;*/
-  width: 115mm;
-  position: absolute;
-  bottom: 0;
-}
-.checklist {
-  font-size: 14pt;
-  text-align: center;
-}
-
-.labels {
-  font-size: 2.5mm;
-  margin-left: 2mm;
-  text-transform: uppercase;
 }
 
 .amp {
